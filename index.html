@@ -33,8 +33,21 @@
         <div class="hero-visual reveal" data-delay="120">
           <div class="glow"></div>
           <div class="phone back"><img src="public/assets/modelo-stories.webp" alt="Exemplo de Story profissional" width="270" height="480"></div>
-          <div class="phone front"><video autoplay muted loop playsinline poster="public/assets/modelo-stories.webp"><source src="public/assets/demo-1.mp4" type="video/mp4"></video></div>
+          <div class="phone front"><video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="public/assets/modelo-stories.webp"><source src="public/assets/demo-1.mp4" type="video/mp4"></video></div>
           <span class="floating-card card-one">+800 adesivos</span><span class="floating-card card-two">Pronto para usar ✦</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section showcase">
+      <div class="shell center"><span class="eyebrow">Parte do que você vai receber</span><h2 class="reveal">Adesivos criados para a rotina da sua clínica</h2><p class="section-intro reveal">Uma pequena amostra do acervo original: odontologia, atendimento, conteúdo e comunicação com pacientes.</p>
+        <div class="showcase-grid">
+          <figure class="showcase-tall reveal"><img src="public/assets/adesivos-odontologia.webp" alt="Adesivos exclusivos para odontologia" loading="lazy"><figcaption>Odontologia e HOF</figcaption></figure>
+          <figure class="reveal" data-delay="60"><img src="public/assets/adesivos-dia-a-dia.webp" alt="Adesivos para o dia a dia da clínica" loading="lazy"><figcaption>Rotina da clínica</figcaption></figure>
+          <figure class="reveal" data-delay="120"><img src="public/assets/adesivos-kids.webp" alt="Adesivos odontológicos infantis" loading="lazy"><figcaption>Odontopediatria</figcaption></figure>
+          <figure class="reveal" data-delay="180"><img src="public/assets/figurinhas-whatsapp-original.webp" alt="Figurinhas para WhatsApp de dentistas" loading="lazy"><figcaption>WhatsApp</figcaption></figure>
+          <figure class="showcase-wide reveal"><img src="public/assets/mockup-whatsapp.webp" alt="Pack de figurinhas visto no celular" loading="lazy"><figcaption>Prontas para usar</figcaption></figure>
+          <figure class="reveal" data-delay="100"><img src="public/assets/story-consultorio.webp" alt="Exemplo de Story em consultório odontológico" loading="lazy"><figcaption>Stories reais</figcaption></figure>
         </div>
       </div>
     </section>
@@ -76,10 +89,9 @@
       </div>
     </section>
 
-    <section class="section shell grid testimonial">
-      <div class="reveal"><span class="eyebrow">Resultado de quem já usa</span><h2>Quem usa, recomenda</h2><div class="stars" aria-label="5 estrelas">★★★★★</div><blockquote>“Material de excelente qualidade, nota 10!”</blockquote><p>Mais praticidade e qualidade para a rotina de conteúdo.</p></div>
-      <img class="reveal" data-delay="100" src="public/assets/depoimento.webp" alt="Depoimento de cliente do Pack Stories Harmonie" loading="lazy">
-    </section>
+    <section class="section testimonials-section"><div class="shell center"><span class="eyebrow">Resultados de quem já usa</span><h2 class="reveal">Quem usa, recomenda</h2><div class="stars reveal" aria-label="5 estrelas">★★★★★</div>
+      <div class="testimonial-grid"><figure class="reveal"><img src="public/assets/depoimento-1.webp" alt="Cliente elogiando a qualidade do Pack Harmonie" loading="lazy"></figure><figure class="reveal" data-delay="80"><img src="public/assets/depoimento-2.webp" alt="Depoimento de cliente do Pack Harmonie" loading="lazy"></figure><figure class="reveal" data-delay="160"><img src="public/assets/depoimento-3.webp" alt="Cliente contando que o pack facilitou sua rotina" loading="lazy"></figure></div>
+      <p class="testimonial-caption reveal">Mais praticidade, qualidade e tempo livre para profissionais da odontologia.</p></div></section>
 
     <section class="section offer-section" id="oferta">
       <div class="shell offer reveal">
@@ -101,6 +113,8 @@
     addEventListener('scroll',()=>{const h=document.documentElement;progress.style.transform=`scaleX(${h.scrollTop/(h.scrollHeight-h.clientHeight)})`},{passive:true});
     const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>{el.style.transitionDelay=(el.dataset.delay||0)+'ms';observer.observe(el)});
+    const videos=[...document.querySelectorAll('video')];
+    videos.forEach(video=>video.addEventListener('play',()=>videos.forEach(other=>{if(other!==video)other.pause()})));
     document.querySelectorAll('.checkout').forEach(link=>link.addEventListener('click',()=>{if(window.fbq)fbq('track','InitiateCheckout',{value:69.90,currency:'BRL'})}));
   </script>
 </body>
